@@ -1,4 +1,5 @@
 
 #include "Matrice_patratica.h"
 
-Matrice_patratica::Matrice_patratica() {}
+template <class T>
+Matrice_patratica<T>::Matrice_patratica(unsigned int dim) : Matrice<T>(dim, dim) {}

@@ -3,9 +3,14 @@
 
 #include "Matrice.h"
 
-class Matrice_oarecare: Matrice {
+template <class T>
+class Matrice_oarecare: public Matrice<T> {
+private:
+
 public:
-    Matrice_oarecare();
+    Matrice_oarecare(unsigned int lin, unsigned int col);
+
+
 };
 
 

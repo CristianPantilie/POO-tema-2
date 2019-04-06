@@ -1,4 +1,5 @@
 
 #include "Matrice_oarecare.h"
 
-Matrice_oarecare::Matrice_oarecare() {}
+template <class T>
+Matrice_oarecare<T>::Matrice_oarecare(unsigned int lin, unsigned int col) : Matrice<T>(lin, col) {}
