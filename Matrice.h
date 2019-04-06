@@ -31,8 +31,10 @@ public:
     void adauga(Complex<T> z, unsigned int linie, unsigned int coloana);
 
 
-    Matrice operator+(const Matrice &m);
+    Matrice<T> transpusa();
 
+    Matrice operator+(const Matrice &z);
+    Matrice operator*(Matrice &z);
 
     template <class Y> friend std::ostream &operator<< (std::ostream &os, const Matrice<Y> &matrice);
     template <class Y> friend std::istream &operator>> (std::istream &is, Matrice<Y> &matrice);

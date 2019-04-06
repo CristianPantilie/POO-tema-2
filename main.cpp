@@ -28,7 +28,7 @@ int main() {
 
     cout << B << endl;
 
-    cout << A + B;
+    cout << A * B;
 
 
 //    Complex<double> *s = new Complex<double>(3, 4);

@@ -9,7 +9,6 @@ private:
 
     Complex<T> determinant;
 
-    Matrice<T> transpusa();
     void cofactor(Complex<T> **mat, Complex<T> **cof, int i, int j, int n);
     Complex<T> det(Complex<T> **mat, int n);
     void adjuncta(Complex<T> **mat, Complex<T> **adj, int n);

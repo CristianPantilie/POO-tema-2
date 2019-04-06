@@ -47,6 +47,22 @@ int Matrice<T>::comparaPoz(Matrice<T>::pozitie p1, Matrice<T>::pozitie p2)
 }
 
 template <class T>
+Matrice<T> Matrice<T>::transpusa() {
+
+    Matrice rez(this->coloane, this->linii);
+    auto *iter = this->head;
+
+    while(iter)
+    {
+        rez.adauga(iter->val, iter->poz.coloana, iter->poz.linie);
+        iter = iter->next;
+    }
+
+    return rez;
+}
+
+
+template <class T>
 Matrice<T> Matrice<T>::operator+(const Matrice<T> &z) {
     if(this->linii == z.linii && this->coloane == z.coloane)
     {
@@ -92,6 +108,62 @@ Matrice<T> Matrice<T>::operator+(const Matrice<T> &z) {
     }
 }
 
+template <class T>
+Matrice<T> Matrice<T>::operator*(Matrice<T> &z) {
+    if(this->coloane == z.linii)
+    {
+        Matrice rez(this->linii, z.coloane);
+        Matrice zt = z.transpusa();
+        auto *iter1 = this->head;
+        auto *iter2 = zt.head;
+
+        for (int i = 1; i <= this->linii; ++i)
+        {
+            bool found = false;
+            Complex<T> r(0, 0);
+            while(iter1 && iter1->poz.linie < i)
+                iter1 = iter1->next;
+
+            while(iter1 && iter1->poz.linie == i)
+            {
+                iter2 = zt.head;
+                int col;
+                for (int j = 1; j <= zt.linii; ++j) {
+
+                    while (iter2 && iter2->poz.linie < j)
+                        iter2 = iter2->next;
+
+                    while (iter2 && iter2->poz.linie == j)
+                    {
+                        for (int k = 1; k <= zt.linii; ++k)
+                        {
+                            if (iter1->poz.coloana == k && iter2->poz.coloana == k) {
+                                if (found)
+                                    r = r + iter1->val * iter2->val;
+                                else {
+                                    r = iter1->val * iter2->val;
+                                    found = true;
+                                    col = j;
+                                }
+                            }
+                        }
+                        iter2 = iter2->next;
+                    }
+                }
+                if (found)
+                    rez.adauga(r, i, col);
+
+                iter1 = iter1->next;
+            }
+        }
+        return rez;
+    }
+    else
+    {
+        cout << "Matricile nu pot fi inmultite";
+        return Matrice(0, 0);
+    }
+}
 
 
 template <class Y>
