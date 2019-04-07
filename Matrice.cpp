@@ -217,3 +217,11 @@ istream &operator>>(istream &is, Matrice<Y> &matrice) {
     return is;
 }
 
+template<class T>
+Complex<T> Matrice<T>::determinant() {
+
+    cout << "Eroare: matricea nu este patratica";
+
+    return Complex<T>();
+}
+

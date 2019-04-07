@@ -26,18 +26,17 @@ protected:
     int comparaPoz(struct pozitie p1, struct pozitie p2);
 
 public:
-
+    //metode comune pentru toate tipurile de matrice:
     Matrice(unsigned int linii, unsigned int coloane);
     void adauga(Complex<T> z, unsigned int linie, unsigned int coloana);
-
-
     Matrice<T> transpusa();
-
     Matrice operator+(const Matrice &z);
     Matrice operator*(Matrice &z);
-
     template <class Y> friend std::ostream &operator<< (std::ostream &os, const Matrice<Y> &matrice);
     template <class Y> friend std::istream &operator>> (std::istream &is, Matrice<Y> &matrice);
+
+    //functii virtuale:
+    virtual Complex<T> determinant();
 };
 
 

@@ -2,9 +2,10 @@
 #define POO_TEMA_2_MATRICE_PATRATICA_H
 #include "Matrice.h"
 #include "Complex.h"
+#include "Matrice_oarecare.h"
 
 template <class T>
-class Matrice_patratica: public Matrice<T> {
+class Matrice_patratica: public Matrice_oarecare<T> {
 private:
 
     Complex<T> determinant;
