@@ -2,6 +2,7 @@
 #define POO_TEMA_2_MATRICECLIENT_H
 
 #include "Matrice.h"
+#include "Matrice_oarecare.h"
 
 /*
  * Factory design pattern
@@ -11,12 +12,12 @@
 template <class T>
 class MatriceClient{
 private:
-    Matrice<T> *newMat;
+    Matrice_oarecare<T> *newMat;
 public:
     MatriceClient();
     ~MatriceClient();
     void creeaza(unsigned int lin, unsigned int col);
-    Matrice<T> *getMatrice();
+    Matrice_oarecare<T> *getMatrice();
 };
 
 

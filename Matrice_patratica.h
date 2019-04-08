@@ -8,7 +8,6 @@ template <class T>
 class Matrice_patratica: public Matrice_oarecare<T> {
 private:
 
-    Complex<T> determinant;
 
     void cofactor(Complex<T> **mat, Complex<T> **cof, int i, int j, int n);
     Complex<T> det(Complex<T> **mat, int n);
@@ -17,8 +16,8 @@ private:
 public:
     Matrice_patratica(unsigned int dim);
 
-//    Complex<T> determinant();
-    Matrice<T> inversa();
+    Complex<T> determinant();
+    Matrice_patratica<T> inversa();
 
 };
 

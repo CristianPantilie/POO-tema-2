@@ -19,7 +19,7 @@ MatriceClient<T>::~MatriceClient() {
 }
 
 template<class T>
-Matrice<T> *MatriceClient<T>::getMatrice() {
+Matrice_oarecare<T> *MatriceClient<T>::getMatrice() {
     return newMat;
 }
 
