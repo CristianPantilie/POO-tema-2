@@ -75,3 +75,13 @@ std::istream &operator>>(std::istream &is, Complex<Y> &z) {
     is >> z.im;
     return is;
 }
+
+template<class T>
+T Complex<T>::getRe() {
+    return this->re;
+}
+
+template<class T>
+T Complex<T>::getIm() {
+    return this->im;
+}

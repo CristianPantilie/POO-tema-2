@@ -1,14 +1,62 @@
 
 #include "Matrice_oarecare.h"
-#include "Matrice.h"
+
 #include <iostream>
 using namespace std;
 
-template <class T>
+//constructor
+template <typename T>
 Matrice_oarecare<T>::Matrice_oarecare(unsigned int lin, unsigned int col) : Matrice<T>(lin, col) {}
 
 
-template <class T>
+//copy constructor
+template<typename T>
+Matrice_oarecare<T>::Matrice_oarecare(const Matrice_oarecare<T> &z) : Matrice<T>(z) {
+    auto *iter1 = z.head;
+    while(iter1)
+    {
+        this->adauga(iter1->val, iter1->poz.linie, iter1->poz.coloana);
+        iter1 = iter1->next;
+    }
+}
+
+//destructor
+template<typename T>
+Matrice_oarecare<T>::~Matrice_oarecare() {
+    auto *iter = this->head;
+
+    while(iter)
+    {
+        auto *temp = iter;
+        iter = iter->next;
+        delete temp;
+    }
+    this->head = NULL;
+}
+
+template<typename T>
+void Matrice_oarecare<T>::operator=(const Matrice_oarecare<T> &z){
+
+    this->linii = z.linii;
+    this->coloane = z.coloane;
+    this->head = NULL;
+
+    auto *iter1 = z.head;
+    while(iter1)
+    {
+        this->adauga(iter1->val, iter1->poz.linie, iter1->poz.coloana);
+        iter1 = iter1->next;
+    }
+}
+
+
+template<typename T>
+Matrice_oarecare<T> Matrice_oarecare<T>::inversa() {
+    cout << "Matricea nu este patratica, nu se poate calcula inversa";
+    return Matrice_oarecare<T>(0, 0);
+}
+
+template <typename T>
 Matrice_oarecare<T> Matrice_oarecare<T>::transpusa() {
 
     Matrice_oarecare<T> rez(this->coloane, this->linii);
@@ -23,8 +71,7 @@ Matrice_oarecare<T> Matrice_oarecare<T>::transpusa() {
     return rez;
 }
 
-
-template <class T>
+template <typename T>
 void Matrice_oarecare<T>::adauga(Complex<T> z, unsigned int linie, unsigned int coloana)
 {
     auto *nou = new struct nod<T>;//new struct nod;
@@ -49,7 +96,7 @@ void Matrice_oarecare<T>::adauga(Complex<T> z, unsigned int linie, unsigned int 
     }
 }
 
-template <class T>
+template <typename T>
 Matrice_oarecare<T> Matrice_oarecare<T>::operator+(const Matrice_oarecare<T> &z) {
     if(this->linii == z.linii && this->coloane == z.coloane)
     {
@@ -95,7 +142,8 @@ Matrice_oarecare<T> Matrice_oarecare<T>::operator+(const Matrice_oarecare<T> &z)
     }
 }
 
-template <class T>
+
+template <typename T>
 Matrice_oarecare<T> Matrice_oarecare<T>::operator*(Matrice_oarecare<T> &z) {
     if(this->coloane == z.linii)
     {
@@ -152,8 +200,7 @@ Matrice_oarecare<T> Matrice_oarecare<T>::operator*(Matrice_oarecare<T> &z) {
     }
 }
 
-
-template <class Y>
+template <typename Y>
 ostream &operator<<(ostream &os, const Matrice_oarecare<Y> &matrice) {
     if(!matrice.head)
         os << "Matricea este goala";
@@ -178,7 +225,7 @@ ostream &operator<<(ostream &os, const Matrice_oarecare<Y> &matrice) {
     return os;
 }
 
-template<class Y>
+template<typename Y>
 istream &operator>>(istream &is, Matrice_oarecare<Y> &matrice) {
     cout << "\nNr. de linii: ";
     is >> matrice.linii;
@@ -204,15 +251,28 @@ istream &operator>>(istream &is, Matrice_oarecare<Y> &matrice) {
     return is;
 }
 
-template<class T>
+template<typename T>
 Complex<T> Matrice_oarecare<T>::determinant() {
     cout << "Matricea nu este patratica, nu se poate calcula determinantul";
     return Complex<T>();
 }
 
-template<class T>
-Matrice_oarecare<T> Matrice_oarecare<T>::inversa() {
-    cout << "Matricea nu este patratica, nu se poate calcula inversa";
-    return Matrice_oarecare<T>(0, 0);
+//}
+
+
+template<typename T>
+bool Matrice_oarecare<T>::esteDiagonala() {
+    auto *iter = this->head;
+    while(iter)
+    {
+        if(iter->poz.linie != iter->poz.coloana)
+            return false;
+        iter = iter->next;
+    }
+    return true;
 }
+
+
+
+
 

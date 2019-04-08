@@ -14,6 +14,8 @@ public:
 
     void setRe(T re);
     void setIm(T im);
+    T getRe();
+    T getIm();
 
     void operator=(const Complex<T> &z);
     Complex<T> operator+(const Complex<T> &z);
@@ -23,6 +25,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Complex<Y> &z);
     template<class Y>
     friend std::istream &operator>>(std::istream &is, Complex<Y> &z);
+
 };
 
 

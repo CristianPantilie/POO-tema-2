@@ -2,14 +2,13 @@
 #define POO_TEMA_2_MATRICE_H
 
 #include "Complex.h"
-#include "Matrice_oarecare.h"
 
 struct pozitie
 {
     unsigned int linie;
     unsigned int coloana;
 };
-template <class T>
+template <typename T>
 struct nod
 {
     Complex<T> val;
@@ -17,7 +16,7 @@ struct nod
     struct nod *next;
 };
 
-template <class T>
+template <typename T>
 class Matrice {
 protected:
     unsigned int linii, coloane;
@@ -28,11 +27,11 @@ protected:
 
 public:
     Matrice(unsigned int linii, unsigned int coloane);
-
-    //void adauga(Complex<T> z, unsigned int linie, unsigned int coloana);
+    Matrice(const Matrice<T> &z);
+    virtual ~Matrice();
 
     virtual Complex<T> determinant() = 0;
-    virtual Matrice_oarecare<T> inversa() = 0;
+
 };
 
 #endif //POO_TEMA_2_MATRICE_H

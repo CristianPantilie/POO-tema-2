@@ -1,10 +1,10 @@
 #ifndef POO_TEMA_2_MATRICE_PATRATICA_H
 #define POO_TEMA_2_MATRICE_PATRATICA_H
-#include "Matrice.h"
-#include "Complex.h"
+
+#include <ostream>
 #include "Matrice_oarecare.h"
 
-template <class T>
+template <typename T>
 class Matrice_patratica: public Matrice_oarecare<T> {
 private:
 
@@ -18,6 +18,8 @@ public:
 
     Complex<T> determinant();
     Matrice_patratica<T> inversa();
+
+    template <class Y> friend std::ostream &operator<<(std::ostream &os, Matrice_patratica<Y> &patratica);
 
 };
 

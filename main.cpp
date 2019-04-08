@@ -3,35 +3,21 @@
 #include "Matrice.cpp"
 #include "Matrice_patratica.cpp"
 #include "Matrice_oarecare.cpp"
-#include "MatriceClient.cpp"
+#include "MatriceFactory.cpp"
 
 using namespace std;
 
 int main() {
 
     Complex<int> z(4, 3);
-
-    MatriceClient<int> factory;
-    factory.creeaza(2, 2);
-    Matrice_oarecare<int> A = *factory.getMatrice();
-
-    factory.creeaza(2, 3);
-    Matrice_oarecare<int> B = *factory.getMatrice();
+//
+    MatriceFactory<int> factory;
+    cin >> factory;
+    Matrice_oarecare<int> *A = factory.getNewMat();
 
 
-    A.adauga(z, 1, 1);
-    A.adauga(z, 2, 2);
 
-    B.adauga(z, 1, 1);
-    B.adauga(z, 2, 2);
-    B.adauga(z, 2, 3);
-
-    cout << A * B;
-//    //cout << A << endl << B << endl << A * B;
-
-//    Complex<double> *s = new Complex<double>(3, 4);
-//    delete s;
-
+    cout << A->determinant();
 
 
     return 0;
