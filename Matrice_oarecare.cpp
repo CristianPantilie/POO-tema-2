@@ -103,7 +103,7 @@ Matrice_oarecare<T> Matrice_oarecare<T>::operator+(const Matrice_oarecare<T> &z)
         {
             int c;
             if(iter1 && iter2)
-                c = comparaPoz(iter1->poz, iter2->poz);
+                c = Matrice<T>::comparaPoz(iter1->poz, iter2->poz);
             else if(!iter1)
                 c = 1;
             else

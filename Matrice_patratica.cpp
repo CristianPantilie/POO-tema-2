@@ -191,7 +191,6 @@ ostream &operator<<(ostream &os, Matrice_patratica<Y> &patratica)
             os << endl;
         }
     }
-
     os << "\nDeterminantul: " << patratica.determinant();
 
     return os;
