@@ -25,7 +25,6 @@ public:
     template <class Y> friend std::istream &operator>> (std::istream &is, Matrice_oarecare<Y> &matrice);
 
     virtual Complex<T> determinant();
-    virtual Matrice_oarecare<T> inversa();
 
     bool esteDiagonala();
 };

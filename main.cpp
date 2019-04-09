@@ -15,9 +15,8 @@ int main() {
     cin >> factory;
     Matrice_oarecare<int> *A = factory.getNewMat();
 
-
-
-    cout << A->determinant();
+    cout << *A;
+    cout << "Determinant" << A->determinant();
 
 
     return 0;

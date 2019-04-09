@@ -50,12 +50,6 @@ void Matrice_oarecare<T>::operator=(const Matrice_oarecare<T> &z){
 }
 
 
-template<typename T>
-Matrice_oarecare<T> Matrice_oarecare<T>::inversa() {
-    cout << "Matricea nu este patratica, nu se poate calcula inversa";
-    return Matrice_oarecare<T>(0, 0);
-}
-
 template <typename T>
 Matrice_oarecare<T> Matrice_oarecare<T>::transpusa() {
 
